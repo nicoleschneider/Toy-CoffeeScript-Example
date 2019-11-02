@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  font-family: sans-serif;
+}
+
+#controlPanel {
+  float: left;
+  padding-top: 30px;
+}
+
+.button {
+  background-color: gray;
+  color: white;C
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  margin: 90px 40px;
+  cursor: pointer;
+}
+
+#traffic-light {
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+
+  height: 550px;
+  width: 200px;
+  float: left;
+  background-color: #333;
+  border-radius: 40px;
+  margin: 30px 0;
+  padding: 20px;
+}
+
+.bulb {
+
+  height: 150px;
+  width: 150px;
+  background-color: #111;
+  border-radius: 50%;
+  margin: 25px auto;
+  transition: background 500ms;
+}
+</style> 
+</head>
+
+<body>
+<div id="controlPanel">
+  <h1 id="goButton" class="button">Go</h1>
+</div>
+<div id="traffic-light">
+  <div id="stopLight" class="bulb"></div>
+  <div id="slowLight" class="bulb"></div>
+  <div id="goLight" class="bulb"></div>
+</div>
+</body>
+
+<script>
+
+(function() {
+  var button, count, illuminateGreen, illuminateRed, illuminateYellow;
+
+  button = document.getElementById('goButton');
+
+  count = 1;
+
+  button.onclick = function() {
+    switch (count) {
+      case 1:
+        illuminateRed();
+        return count++;
+      case 2:
+        illuminateGreen();
+        return count++;
+      case 3:
+        illuminateYellow();
+        return count = 1;
+    }
+  };
+
+  illuminateRed = function() {
+    document.getElementById('stopLight').style.backgroundColor = "red";
+    document.getElementById('slowLight').style.backgroundColor = "black";
+    return document.getElementById('goLight').style.backgroundColor = "black";
+  };
+
+  illuminateYellow = function() {
+    document.getElementById('stopLight').style.backgroundColor = "black";
+    document.getElementById('slowLight').style.backgroundColor = "yellow";
+    return document.getElementById('goLight').style.backgroundColor = "black";
+  };
+
+  illuminateGreen = function() {
+    document.getElementById('stopLight').style.backgroundColor = "black";
+    document.getElementById('slowLight').style.backgroundColor = "black";
+    return document.getElementById('goLight').style.backgroundColor = "green";
+  };
+
+}).call(this);
+
+
+</script>
+
+</html>
